@@ -1,10 +1,10 @@
 'use strict';
 
 const express = require('express');
-require('dotenv').config;
 const app = express();
 const middlewares = require('./middlewares/validate-number')
 const err_500 = require('./error-handlers/500')
+var cors = require('cors')
 
 app.use(express.json())
 
@@ -14,9 +14,9 @@ app.get('/', (req, res) => {
 
 app.get('/square', middlewares(), (req, res) => {
   const result = req.query.num
-  req.num = + result * result;
+  const req_num = + result * result
 
-  const data = req.num
+  const data = req_num
 
 
   res.status(200).send({ data })
