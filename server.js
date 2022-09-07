@@ -27,7 +27,7 @@ app.use(err_500);
 
 
 function start(port) {
-  app.listen(3000, () => console.log(`server running in port is ${port}`));
+  app.listen(port, () => console.log(`server running in port is ${port}`));
 }
 
 module.exports = {
