@@ -8,14 +8,18 @@ const err_500 = require('./error-handlers/500')
 
 app.use(express.json())
 
-app.get('/square',middlewares() ,(req, res) => {
-        const result = req.query.num 
-    req.num = + result*result;
+app.get('/', (req, res) => {
+  res.status(200).send('hello world');
+})
 
-    const data = req.num
-       
+app.get('/square', middlewares(), (req, res) => {
+  const result = req.query.num
+  req.num = + result * result;
 
-    res.status(200).send({data})
+  const data = req.num
+
+
+  res.status(200).send({ data })
 })
 
 app.use(err_500);
@@ -23,10 +27,10 @@ app.use(err_500);
 
 
 function start(port) {
-    app.listen(3000, () => console.log(`server running in port is ${port}`));
-  }
+  app.listen(3000, () => console.log(`server running in port is ${port}`));
+}
 
 module.exports = {
-    app: app,
-    start: start
-  }
+  app: app,
+  start: start
+}
