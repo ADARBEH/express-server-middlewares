@@ -2,7 +2,7 @@
 
 const express = require('express');
 const app = express();
-const middlewares = require('./middlewares/validate-number')
+const middlewares_user = require('./middlewares/validate-number')
 const err_500 = require('./error-handlers/500')
 var cors = require('cors')
 
@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
   res.status(200).send('hello world');
 })
 
-app.get('/square', middlewares(), (req, res) => {
+app.get('/square', middlewares_user(), (req, res) => {
   const result = req.query.num
   const req_num = + result * result
 
